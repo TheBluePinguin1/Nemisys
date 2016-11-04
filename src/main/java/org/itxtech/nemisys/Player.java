@@ -113,15 +113,15 @@ public class Player {
                     break;
                 }
                 if(this.server.getMaxPlayers() <= this.server.getOnlinePlayers().size()){
-                    this.close("Synapse Server: " + TextFormat.RED + "Synapse server is full!");
+                    this.close("§eThe SweProx Network is currently full! §aPurchase a rank to bypass this limit!");
                     break;
                 }
                 if (ev.getClientHash() == null || ev.getClientHash().equals("")) {
-                    this.close("Synapse Server: " + TextFormat.RED + "No target server!");
+                    this.close("§cThe login servers seems to be offline! §aPlease reconnect!");
                     break;
                 }
                 if(!this.server.getClients().containsKey(ev.getClientHash())){
-                    this.close("Synapse Server: " + TextFormat.RED + "Target server is not online!");
+                    this.close("§cThe login servers seems to be offline! §aPlease reconnect!");
                     break;
                 }
 
