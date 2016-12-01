@@ -448,32 +448,6 @@ public class Server {
         if (!Nemisys.ANSI) {
             return;
         }
-
-        Runtime runtime = Runtime.getRuntime();
-        double used = NemisysMath.round((double) (runtime.totalMemory() - runtime.freeMemory()) / 1024 / 1024, 2);
-        double max = NemisysMath.round(((double) runtime.maxMemory()) / 1024 / 1024, 2);
-        String usage = Math.round(used / max * 100) + "%";
-        String title = (char) 0x1b + "]0;" + this.getName() + " " +
-                this.getNemisysVersion() +
-                " | Online " + this.players.size() + "/" + this.getMaxPlayers() +
-                " | Clients " + this.clients.size() +
-                " | Memory " + usage;
-        if (!Nemisys.shortTitle) {
-            title += " | U " + NemisysMath.round((this.network.getUpload() / 1024 * 1000), 2)
-                    + " D " + NemisysMath.round((this.network.getDownload() / 1024 * 1000), 2) + " kB/s";
-
-            if (this.synapseInterface.getInterface().getSessionManager() != null) {
-                title += " | SynLibTPS " + this.synapseInterface.getInterface().getSessionManager().getTicksPerSecond() +
-                        " | SynLibLoad " + this.synapseInterface.getInterface().getSessionManager().getTickUsage() + "%";
-            }
-        }
-
-        title += " | TPS " + this.getTicksPerSecond() +
-                " | Load " + this.getTickUsage() + "%" + (char) 0x07;
-
-        System.out.print(title);
-
-        this.network.resetStatistics();
     }
 
     public QueryRegenerateEvent getQueryInformation() {
